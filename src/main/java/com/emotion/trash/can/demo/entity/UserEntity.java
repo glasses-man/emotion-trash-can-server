@@ -18,7 +18,7 @@ public class UserEntity {
     @Column(length = 16, nullable = false)
     private String id;
 
-    @Column(nullable = false)
+    @Column(length = 64, nullable = false)
     private String password;
 
     @Column(length = 16, nullable = false)
