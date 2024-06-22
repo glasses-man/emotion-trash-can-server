@@ -2,7 +2,6 @@ package com.emotion.trash.can.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table
@@ -24,4 +23,12 @@ public class UserEntity {
 
     @Column(length = 16, nullable = false)
     private String userName;
+
+    public void updatePassword(String password) {
+        this.password = password;
+    }
+
+    public void updateUserName(String userName) {
+        this.userName = userName;
+    }
 }
