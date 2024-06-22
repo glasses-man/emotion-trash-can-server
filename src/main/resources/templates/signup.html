@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .signup-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+        }
+        .signup-container input[type="text"],
+        .signup-container input[type="password"] {
+            width: 94%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .signup-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .signup-container button:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="signup-container">
+    <h2>회원가입</h2>
+    <form id="signup-form">
+        <input type="text" id="signup-username" name="username" placeholder="아이디를 입력하세요" required>
+        <input type="password" id="signup-password" name="password" placeholder="비밀번호를 입력하세요" required>
+        <button type="submit">회원가입</button>
+        <p class="error-message" id="signup-error-message">오류 메시지가 여기에 표시됩니다.</p>
+    </form>
+</div>
+
+<script>
+    document.getElementById('signup-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const username = document.getElementById('signup-username').value;
+        const password = document.getElementById('signup-password').value;
+
+        // 유효성 검사
+        const usernameRegex = /^[a-zA-Z0-9]{4,16}$/;
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+
+        if (!usernameRegex.test(username)) {
+            displaySignupErrorMessage('아이디는 영어와 숫자로만 구성되며, 4자에서 16자 사이여야 합니다.');
+            return;
+        }
+
+        if (!passwordRegex.test(password)) {
+            displaySignupErrorMessage('비밀번호는 영어, 숫자, 특수문자를 포함하며, 8자에서 16자 사이여야 합니다.');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                window.location.href = 'login.html'; // 로그인 페이지로 이동
+            } else {
+                const result = await response.json();
+                displaySignupErrorMessage(result.message || '회원가입 중 오류가 발생했습니다.');
+            }
+        } catch (error) {
+            console.error('회원가입 중 오류가 발생했습니다:', error);
+            displaySignupErrorMessage('서버와의 통신 중 오류가 발생했습니다.');
+        }
+    });
+
+    function displaySignupErrorMessage(message) {
+        const errorMessageElement = document.getElementById('signup-error-message');
+        errorMessageElement.textContent = message;
+        errorMessageElement.style.display = 'block';
+    }
+</script>
+</body>
+</html>

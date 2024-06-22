@@ -60,6 +60,21 @@
             background-color: #007BFF;
             color: #fff;
         }
+        .logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border: 1px solid #FF0000;
+            background-color: #FF0000;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .logout:hover {
+            background-color: #cc0000;
+        }
     </style>
 </head>
 <body>
@@ -73,6 +88,28 @@
         <a href="write.html">Write a Blog</a>
         <a href="myblogs.html">View My Blogs</a>
     </div>
+    <button class="logout" id="logout">Logout</button>
 </div>
+<script>
+    // 로그아웃 버튼 클릭 시
+    document.getElementById('logout').addEventListener('click', function() {
+        sessionStorage.removeItem('isLoggedIn');
+        window.location.href = 'login.html';
+    });
+
+    // 로그인 확인
+    window.onload = function() {
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+    }
+
+    // 뒤로 가기 시 로그인 페이지로 이동
+    window.addEventListener('popstate', function(event) {
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+    });
+</script>
 </body>
 </html>
