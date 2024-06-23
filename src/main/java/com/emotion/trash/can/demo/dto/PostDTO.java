@@ -16,7 +16,6 @@ public class PostDTO {
     private Long postId;
     private String title;
     private String content;
-    private String userName;
     private LocalDateTime regDate, modDate;
     private List<String> emotion;
 

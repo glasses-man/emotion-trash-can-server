@@ -21,8 +21,6 @@ public class PostEntity extends BaseEntity{
     @Column(length = 1000)
     private String content;
 
-    @Column(nullable = false)
-    private String userName;
 
     public void updateTitle(String title) {
         this.title = title;

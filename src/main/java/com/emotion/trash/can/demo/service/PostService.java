@@ -14,7 +14,6 @@ public interface PostService {
                 .postId(dto.getPostId())
                 .title(dto.getTitle())
                 .content(dto.getContent())
-                .userName(dto.getUserName())
                 .build();
         return entity;
     }
@@ -24,7 +23,6 @@ public interface PostService {
                 .postId(entity.getPostId())
                 .title(entity.getTitle())
                 .content(entity.getContent())
-                .userName(entity.getUserName())
                 .regDate(entity.getRegDate())
                 .modDate(entity.getModDate())
                 .build();
