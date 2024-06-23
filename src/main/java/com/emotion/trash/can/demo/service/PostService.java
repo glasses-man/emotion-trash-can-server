@@ -6,11 +6,8 @@ import com.emotion.trash.can.demo.entity.PostEntity;
 public interface PostService {
     Long register(PostDTO dto);
 
-    PostDTO get(Long bno);
-
     void modify(PostDTO dto);
 
-    void remove(Long bno);
 
     default PostEntity dtoToEntity(PostDTO dto) {
         PostEntity entity = PostEntity.builder()

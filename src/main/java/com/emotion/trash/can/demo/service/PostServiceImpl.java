@@ -22,11 +22,6 @@ public class PostServiceImpl implements PostService{
         return entity.getPostId();
     }
 
-    @Override
-    public PostDTO get(Long postId) {
-        Optional<PostEntity> result = postRepository.findById(postId);
-        return (result.isPresent()) ? entityToDto(result.get()) : null;
-    }
 
     @Override
     public void modify(PostDTO dto) {
@@ -39,8 +34,4 @@ public class PostServiceImpl implements PostService{
         }
     }
 
-    @Override
-    public void remove(Long postId) {
-        postRepository.deleteById(postId);
-    }
 }
