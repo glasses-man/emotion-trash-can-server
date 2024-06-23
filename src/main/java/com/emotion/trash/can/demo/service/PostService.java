@@ -1,5 +1,6 @@
 package com.emotion.trash.can.demo.service;
 
+import com.emotion.trash.can.demo.dto.EmotionDTO;
 import com.emotion.trash.can.demo.dto.PostDTO;
 import com.emotion.trash.can.demo.entity.PostEntity;
 
@@ -8,6 +9,7 @@ public interface PostService {
 
     void modify(PostDTO dto);
 
+    void emotionModify(EmotionDTO dto);
 
     default PostEntity dtoToEntity(PostDTO dto) {
         PostEntity entity = PostEntity.builder()

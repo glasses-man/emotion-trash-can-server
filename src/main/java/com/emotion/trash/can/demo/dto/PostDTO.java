@@ -18,5 +18,5 @@ public class PostDTO {
     private String content;
     private LocalDateTime regDate, modDate;
     private List<String> emotion;
-    
+
 }

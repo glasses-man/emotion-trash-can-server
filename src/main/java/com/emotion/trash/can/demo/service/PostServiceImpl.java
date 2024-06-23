@@ -1,5 +1,6 @@
 package com.emotion.trash.can.demo.service;
 
+import com.emotion.trash.can.demo.dto.EmotionDTO;
 import com.emotion.trash.can.demo.dto.PostDTO;
 import com.emotion.trash.can.demo.entity.EmotionEntity;
 import com.emotion.trash.can.demo.entity.PostEntity;
@@ -43,6 +44,13 @@ public class PostServiceImpl implements PostService{
             postEntity.updateContent(dto.getContent());
             postRepository.save(postEntity);
         }
+    }
+
+    @Override
+    public void emotionModify(EmotionDTO dto) {
+        EmotionEntity result = emotionRepository.findById(dto.getId()).get();
+        result.modify(dto.getContent());
+        emotionRepository.save(result);
     }
 
 }

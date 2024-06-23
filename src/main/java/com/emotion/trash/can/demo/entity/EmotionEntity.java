@@ -20,4 +20,7 @@ public class EmotionEntity {
     @ManyToOne
     @JoinColumn(name = "fk_post_id")
     private PostEntity post;
+    public void modify(String content){
+        this.content=content;
+    }
 }
