@@ -1,8 +1,11 @@
 package com.emotion.trash.can.demo.dto;
 
+import com.emotion.trash.can.demo.entity.EmotionEntity;
+import com.emotion.trash.can.demo.entity.PostEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -15,5 +18,12 @@ public class PostDTO {
     private String content;
     private String userName;
     private LocalDateTime regDate, modDate;
+    private List<String> emotion;
 
+    public EmotionEntity toEmotionEntity(PostEntity post){
+        return EmotionEntity.builder()
+                .content(title)
+                .post(post)
+                .build();
+    }
 }
