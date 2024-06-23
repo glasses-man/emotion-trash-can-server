@@ -2,10 +2,16 @@ package com.emotion.trash.can.demo.controller;
 
 
 import com.emotion.trash.can.demo.dto.PostDTO;
+import com.emotion.trash.can.demo.dto.PostListDTO;
+import com.emotion.trash.can.demo.dto.request.PageRequest;
+import com.emotion.trash.can.demo.dto.request.PostSearchRequest;
 import com.emotion.trash.can.demo.service.PostService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/post")
@@ -23,6 +29,16 @@ public class PostController {
     @PutMapping("")
     public void modify(@RequestBody PostDTO dto) {
         postService.modify(dto);
+    }
+
+    @GetMapping("")
+    public List<PostListDTO> postList(PageRequest pageRequest) {
+        return postService.postList(pageRequest);
+    }
+
+    @GetMapping("/list")
+    public List<PostListDTO> postSearch(PostSearchRequest request) {
+        return postService.postSearch(request);
     }
 
 }
