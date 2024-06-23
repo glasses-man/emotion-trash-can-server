@@ -18,11 +18,5 @@ public class PostDTO {
     private String content;
     private LocalDateTime regDate, modDate;
     private List<String> emotion;
-
-    public EmotionEntity toEmotionEntity(PostEntity post){
-        return EmotionEntity.builder()
-                .content(title)
-                .post(post)
-                .build();
-    }
+    
 }
