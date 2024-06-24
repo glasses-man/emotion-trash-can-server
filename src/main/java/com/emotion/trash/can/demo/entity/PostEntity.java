@@ -9,10 +9,9 @@ import java.util.List;
 @Entity
 @Table(name = "tb_post")
 @SuperBuilder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString
-public class PostEntity extends BaseEntity{
+public class PostEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
@@ -22,6 +21,14 @@ public class PostEntity extends BaseEntity{
 
     @Column(length = 1000)
     private String content;
+
+    @Column(nullable = false)
+    private String userName;
+
+
+    public PostEntity() {
+        super();
+    }
 
     public void updateTitle(String title) {
         this.title = title;
