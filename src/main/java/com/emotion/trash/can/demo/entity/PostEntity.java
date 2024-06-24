@@ -2,15 +2,16 @@ package com.emotion.trash.can.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_post")
-@Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@SuperBuilder
 @Getter
 @ToString
-public class PostEntity extends BaseEntity{
+public class PostEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
@@ -24,6 +25,7 @@ public class PostEntity extends BaseEntity{
     @Column(nullable = false)
     private String userName;
 
+    
     public void updateTitle(String title) {
         this.title = title;
     }
