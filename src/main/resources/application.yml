@@ -1,9 +1,9 @@
 spring:
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/emotionpost
-    username: glassesman #root
-    password: Glasses123!@# #1234
+    username: glassesman
+    password: Glassesman123!@#
 
   jpa:
     hibernate:
