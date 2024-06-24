@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name="user")
+@Table(name="Users")
 @Builder
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -15,7 +15,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userID;
 
-    @Column(length = 16, nullable = false)
+    @Column(name="id", length = 16, nullable = false, unique = true)
     private String id;
 
     @Column(length = 64, nullable = false)
