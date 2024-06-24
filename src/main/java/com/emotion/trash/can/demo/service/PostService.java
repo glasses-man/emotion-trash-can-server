@@ -15,6 +15,7 @@ public interface PostService {
         PostEntity entity = PostEntity.builder()
                 .postId(dto.getPostId())
                 .title(dto.getTitle())
+                .userName(dto.getUserName())
                 .content(dto.getContent())
                 .build();
         return entity;
@@ -26,6 +27,7 @@ public interface PostService {
                 .title(entity.getTitle())
                 .content(entity.getContent())
                 .regDate(entity.getRegDate())
+                .userName(entity.getUserName())
                 .modDate(entity.getModDate())
                 .build();
         return dto;
