@@ -40,6 +40,14 @@ public class PostServiceImpl implements PostService{
         return entity.getPostId();
     }
 
+    @Override
+    public void delete(Long postId) {
+        Optional<PostEntity> post = postRepository.findById(postId);
+        List<EmotionEntity> emotionResult = emotionRepository.findByPost(post.get());
+        emotionRepository.deleteAll(emotionResult);
+        postRepository.delete(post.get());
+    }
+
 
     @Override
     public void modify(PostDTO dto) {

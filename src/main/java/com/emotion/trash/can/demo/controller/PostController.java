@@ -26,6 +26,11 @@ public class PostController {
         return postService.register(dto);
     }
 
+    @DeleteMapping("")
+    public void delete(@RequestBody PostDTO dto){
+        postService.delete(dto.getPostId());
+    }
+
     @PutMapping("")
     public void modify(@RequestBody PostDTO dto) {
         postService.modify(dto);
