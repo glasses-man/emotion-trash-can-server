@@ -19,11 +19,11 @@ public class UserController {
     }
 
     @GetMapping("/{id}/{password}")
-    public boolean signIn(@PathVariable String id, String password) {
+    public String signIn(@PathVariable String id, String password) {
         return userService.signIn(id, password);
     }
 
-    @PostMapping()
+    @PostMapping("")
     public Long signUp(@RequestBody UserDTO userDTO) {
         return userService.signUp(userDTO);
     }

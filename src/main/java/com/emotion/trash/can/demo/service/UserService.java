@@ -8,7 +8,7 @@ public interface UserService {
     UserDTO get(Long userID);
     void modify(UserDTO dto);
     void remove(Long userID);
-    boolean signIn(String id, String password);
+    String signIn(String id, String password);
 
     default UserEntity dtoToEntity(UserDTO dto) {
         UserEntity entity = UserEntity.builder()

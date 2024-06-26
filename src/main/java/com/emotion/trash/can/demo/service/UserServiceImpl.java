@@ -35,15 +35,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean signIn(String id, String password) {
+    public String signIn(String id, String password) {
         UserEntity userEntity = userRepository.findById(id);
         if (userEntity == null) {
             throw new RuntimeException("User not found with id: " + id);
         }
         if (userEntity.getPassword().equals(password)) {
-            return false;
+            throw new RuntimeException("User not found with password: " + password);
         }
-        return true;
+        return userEntity.getUserName();
     }
 
     @Override
