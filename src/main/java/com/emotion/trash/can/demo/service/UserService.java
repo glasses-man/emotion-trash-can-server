@@ -5,9 +5,7 @@ import com.emotion.trash.can.demo.entity.UserEntity;
 
 public interface UserService {
     Long signUp(UserDTO dto);
-    UserDTO get(Long userID);
-    void modify(UserDTO dto);
-    void remove(Long userID);
+  
     String signIn(String id, String password);
 
     default UserEntity dtoToEntity(UserDTO dto) {
