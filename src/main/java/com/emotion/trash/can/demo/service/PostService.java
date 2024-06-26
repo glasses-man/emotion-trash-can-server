@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface PostService {
     Long register(PostDTO dto);
+    void delete(Long postId);
 
     void modify(PostDTO dto);
 

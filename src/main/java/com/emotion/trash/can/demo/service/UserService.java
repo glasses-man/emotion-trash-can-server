@@ -5,6 +5,7 @@ import com.emotion.trash.can.demo.entity.UserEntity;
 
 public interface UserService {
     Long signUp(UserDTO dto);
+  
     String signIn(String id, String password);
 
     default UserEntity dtoToEntity(UserDTO dto) {
