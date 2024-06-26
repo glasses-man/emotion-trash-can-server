@@ -42,7 +42,7 @@ public class PostController {
     }
 
     @GetMapping("/list")
-    public List<PostListDTO> postSearch(PostSearchRequest request) {
+    public List<PostListDTO> postSearch(@RequestBody PostSearchRequest request) {
         return postService.postSearch(request);
     }
 
