@@ -29,35 +29,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO get(Long userID) {
-        Optional<UserEntity> result = userRepository.findById(userID);
-        return result.isPresent() ? entityToDto(result.get()) : null;
-    }
-
-    @Override
-    public boolean signIn(String id, String password) {
+    public String signIn(String id, String password) {
         UserEntity userEntity = userRepository.findById(id);
         if (userEntity == null) {
             throw new RuntimeException("User not found with id: " + id);
         }
         if (userEntity.getPassword().equals(password)) {
-            return false;
+            throw new RuntimeException("User not found with password: " + password);
         }
-        return true;
-    }
-
-    @Override
-    public void modify(UserDTO dto) {
-        Optional<UserEntity> result = userRepository.findById(dto.getUserID());
-        if (!result.isPresent()) return;
-        UserEntity userEntity = result.get();
-        userEntity.updateUserName(dto.getUserName());
-        userEntity.updatePassword(dto.getPassword());
-        userRepository.save(userEntity);
-    }
-
-    @Override
-    public void remove(Long userID) {
-        userRepository.deleteById(userID);
+        return userEntity.getUserName();
     }
 }

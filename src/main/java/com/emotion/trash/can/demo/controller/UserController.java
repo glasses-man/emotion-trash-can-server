@@ -13,29 +13,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/{userID}")
-    public UserDTO get(@PathVariable("userID") Long userID) {
-        return userService.get(userID);
-    }
-
     @GetMapping("/{id}/{password}")
-    public boolean signIn(@PathVariable String id, String password) {
+    public String signIn(@PathVariable String id, String password) {
         return userService.signIn(id, password);
     }
 
     @PostMapping()
     public Long signUp(@RequestBody UserDTO userDTO) {
         return userService.signUp(userDTO);
-    }
-
-    @PutMapping()
-    public void modify(@RequestBody UserDTO userDTO) {
-        userService.modify(userDTO);
-    }
-
-    @DeleteMapping("/{userID}")
-    public void delete(@PathVariable("userID") Long userID) {
-        userService.remove(userID);
     }
 
 }

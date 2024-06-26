@@ -23,12 +23,4 @@ public class UserEntity {
 
     @Column(length = 16, nullable = false)
     private String userName;
-
-    public void updatePassword(String password) {
-        this.password = password;
-    }
-
-    public void updateUserName(String userName) {
-        this.userName = userName;
-    }
 }
