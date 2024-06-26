@@ -3,14 +3,10 @@ package com.emotion.trash.can.demo.service;
 import com.emotion.trash.can.demo.dto.UserDTO;
 import com.emotion.trash.can.demo.entity.UserEntity;
 import com.emotion.trash.can.demo.repository.UserRepository;
-import io.micrometer.observation.annotation.Observed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
