@@ -35,6 +35,13 @@ public class PostServiceImpl implements PostService{
     }
 
 
+    
+    
+    
+    
+    
+
+    
     @Override
     public void modify(PostDTO dto) {
         Optional<PostEntity> result = postRepository.findById(dto.getPostId());
